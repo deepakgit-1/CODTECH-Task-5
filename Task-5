@@ -1,0 +1,19 @@
+import pyttsx3
+
+def text_to_speech(text, language='en', voice_id=None):
+    engine = pyttsx3.init()
+    voices = engine.getProperty('voices')
+
+    if voice_id:
+        engine.setProperty('voice', voices[voice_id].id)
+
+    engine.setProperty('rate', 150)  # Speed of speech
+    engine.setProperty('volume', 0.9)  # Volume (0.0 to 1.0)
+    engine.setProperty('language', language)
+
+    engine.say(text)
+    engine.runAndWait()
+
+if __name__ == '__main__':
+    input_text = input("Enter text to convert to speech: ")
+    text_to_speech(input_text)
